@@ -25,7 +25,7 @@ Key Points:
 - High Marketing Expenses
 - Need for Customer Feedback Analysis
 
-# SQL  <h2>🧐🗄️</h2>
+# SQL 
 
 We were provided with multiple databases with the necessary information to carry out our analysis. Among them: Products, Geography, Engagement Data, Customers, Customer Reviews, Customer Journey. Here is a preview of what each looks like:
 
