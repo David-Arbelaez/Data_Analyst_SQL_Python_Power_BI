@@ -10,7 +10,7 @@ The idea is to perform a data study exercise and market analysis according to th
 
 
 - [Problem Description](#Problem-Description)
-- [SQL](#SQL)
+- [SQL](#SQL-🧐🗄️)
   - [Data Normalization](#Data-Normalization)
 
 # Problem Description
@@ -25,7 +25,7 @@ Key Points:
 - High Marketing Expenses
 - Need for Customer Feedback Analysis
 
-# SQL 
+# SQL 🧐🗄️
 
 We were provided with multiple databases with the necessary information to carry out our analysis. Among them: Products, Geography, Engagement Data, Customers, Customer Reviews, Customer Journey. Here is a preview of what each looks like:
 
