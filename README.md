@@ -13,7 +13,7 @@ The idea is to perform a data study exercise and market analysis according to th
 - [SQL](#SQL)
   - [Data Normalization](#Data-Normalization)
 
-#Problem Description
+# Problem Description
 
 An online retailer is facing a drop in engagement and sales despite launching multiple campaigns to improve their marketing strategy, which is increasing their costs without significant returns. They decided to contact a data analyst to identify opportunities to improve their strategies.
 
@@ -25,7 +25,7 @@ Key Points:
 - High Marketing Expenses
 - Need for Customer Feedback Analysis
 
-#SQL  <h2>🧐🗄️</h2>
+# SQL  <h2>🧐🗄️</h2>
 
 We were provided with multiple databases with the necessary information to carry out our analysis. Among them: Products, Geography, Engagement Data, Customers, Customer Reviews, Customer Journey. Here is a preview of what each looks like:
 
