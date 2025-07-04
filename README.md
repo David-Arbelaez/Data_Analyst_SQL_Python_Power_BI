@@ -13,7 +13,6 @@ The idea is to perform a data study exercise and market analysis according to th
 
 - [Problem Description](#Problem-Description)
 - [SQL](#SQL)
-  - [Data Normalization](#Data-Normalization)
 - [Python](#python)
 
 # Problem Description
@@ -28,6 +27,8 @@ Key Points:
 - High Marketing Expenses
 - Need for Customer Feedback Analysis
 
+<br/>
+
 <h1>SQL</h1>
 
 We were provided with multiple databases with the necessary information to carry out our analysis. Among them: Products, Geography, Engagement Data, Customers, Customer Reviews, Customer Journey. Here is a preview of what each looks like:
@@ -40,7 +41,7 @@ We were provided with multiple databases with the necessary information to carry
 
 ### Data Normalization
 
-En esta etapa vamos a ajustar la disposicion de los datos para facilitar su manipulacion en las siguientes etapas. Iremos tabla por tabla para verificar que cosas pordemos ir mejorando. Primero, vamos a verificar que no existan datos repetidos o casillas vacias en todas las tablas. Para ellos vamos a utilizar el siguienre query en la tabla de "customer journey":
+In this stage we are going to adjust the data layout to facilitate its manipulation in the following stages. We will go table by table to verify what things we can improve. First, we will verify that there are no repeated data or empty cells in all the tables. For this we will use the following query in the 'customer journey' table:
 
 <br/>
 
@@ -76,14 +77,13 @@ WHERE
 ```
 <br/>
 
-La columna de "Druration" contiene null spaces. Para rellenar esos espacios con informacion util, vamos a clacular un promedio de los valores que tienen otras casillas en esa misma fecha, y asi reemplazar el espacio vacio con informacion probable. Tambien aplicaremos cierta logica para identificar las filas exactamente iguales (duplicadas) y eliminar una de las dos para mantener solo una copia. Repetiremos estos mismo pasos con todas las tablas para garantizar que no tengan datos repetidos ni espacios nulos. Respecto a las modificaciones especificas de la tabla de "customer journey", aprovechamos para normalizar la columna "stage" con upper case. El resultado luce asi:
+The 'Druration' column contains null spaces. To fill those spaces with useful information, we are going to average the values that other cells have on that same date, and replace the empty space with probable information. We will also apply some logic to identify the exact same rows (duplicates) and delete one of the two to keep only one copy. We will repeat these same steps with all tables to ensure that they have no duplicate data and no null spaces. Regarding the modifications specific to the 'customer journey' table, we take the opportunity to normalize the 'stage' column with upper case. The result looks like this:
 
 <br/>
 
 ![image](https://github.com/user-attachments/assets/7314de3f-55f3-4816-8fd2-766250a2466c)
 
-
-La tabla de "customer reviews" presenta dobles espacios para la columna de "ReviewText", vamos a aplicar un query que elimine los espacios adicionales: 
+The 'customer reviews' table has double spaces for the 'ReviewText' column, let's apply a query to remove the extra spaces:
 
 
 <br/>
@@ -106,7 +106,7 @@ FROM
 
 <br/>
 
-Ahora los campos de texto lucen mucho mejor. Esto tambien sera util mas adelante para facilitar su interpretacion mediante python.
+Now the text fields look much better. This will also be useful later to facilitate their interpretation in python.
 
 <br/>
 
@@ -115,7 +115,7 @@ Ahora los campos de texto lucen mucho mejor. Esto tambien sera util mas adelante
 
 <br/>
 
-Para la tabla de "engagement data" fue necesario separar una columna (ViewsClicksCombined) en dos para categorizar correctamente la informacion. Tambien cambiamos el formato de la columna "ContentType" para que sea mayuscula sostenida. 
+For the “engagement data” table it was necessary to separate one column (ViewsClicksCombined) in two to correctly categorize the information. We also changed the format of the “ContentType” column to be a sustained capital letter.
 
 <br/>
 
@@ -136,7 +136,7 @@ FROM
 ```
 <br/>
 
-El resultado puede compararse con su version original en las siguientes imagenes:
+The result can be compared with the original version in the following images:
 
 <br/>
 
@@ -146,7 +146,7 @@ El resultado puede compararse con su version original en las siguientes imagenes
 
 <br/>
 
-Las tablas de "customer" y "geography" contienen informacion referente a los datos de los clientes. Podemos combinarlas para presentar la informacion de forma mas coherente y resumida mediante este query:
+The “customer” and “geography” tables contain information about customer data. We can combine them to present the information in a more coherent and summarized way using this query:
 
 <br/>
 
@@ -175,7 +175,7 @@ ON
 
 <br/>
 
-Finalmente, en la tabla de "prices" vamos a organizar los productos segun su valor para obtener una visualizacion mas facil de interpretar mediante el siguiente query:
+Finally, in the “prices” table we are going to organize the products according to their value in order to obtain a visualization easier to interpret by means of the following query:
 
 <br/>
 
@@ -197,7 +197,7 @@ FROM
 
 <br/>
 
-de este modo cada producto tiene una interpretacion
+each product has its own interpretation.
 
 <br/>
 
@@ -206,4 +206,51 @@ de este modo cada producto tiene una interpretacion
 <br/>
 
 # Python
+Let's install some libraries that we will need to run the script.
 
+<br/>
+
+```
+pip install pandas nltk pyodbc
+```
+<br/>
+
+- pandas (pd): We use pandas to load, process, and manipulate structured data. In this project, it's responsible for handling the review data as a DataFrame, allowing us to apply sentiment analysis row by row, transform columns, and export the final dataset to a clean CSV file for reporting or further analysis.
+
+- pyodbc: pyodbc is used to connect Python to our SQL Server database. It allows us to execute SQL queries and retrieve data directly into a pandas DataFrame. This connection is essential for pulling customer reviews stored in the database before performing sentiment analysis.
+
+- nltk: We use the nltk library, specifically the SentimentIntensityAnalyzer from the VADER tool, to compute sentiment scores for each review. The sentiment score helps classify text into categories like positive, negative, or neutral. We download the required vader_lexicon at runtime to enable this functionality.
+
+<br/>
+
+Lets debrief function by function:
+
+<br/>
+
+## fetch_data_from_sql()
+Connects to a local SQL Server (SQLEXPRESS) and retrieves customer review data from the fixed_customer_reviews table in the PortfolioProject_MarketingAnalytics database.
+Returns the results as a pandas.DataFrame.
+
+<br/>
+
+## calculate_sentiment(review)
+Uses NLTK’s SentimentIntensityAnalyzer to compute a sentiment score for the given review text.
+Returns the compound score (a value from -1 to 1).
+
+<br/>
+
+## categorize_sentiment(score, rating)
+Maps the compound sentiment score and the star rating into a custom sentiment label:
+
+Positive, Negative, Neutral, Mixed Positive, or Mixed Negative.
+
+Designed to account for alignment or conflict between textual sentiment and numerical rating.
+
+<br/>
+
+## sentiment_bucket(score)
+Groups the sentiment score into one of four defined buckets:
+
+'0.5 to 1.0', '0.0 to 4.9', '-0.49 to 0.0', or '-1.0 to -0.5'.
+
+<br/>
