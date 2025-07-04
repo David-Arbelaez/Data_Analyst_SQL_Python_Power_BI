@@ -13,7 +13,7 @@ The idea is to perform a data study exercise and market analysis according to th
 
 - [Problem Description](#Problem-Description)
 - [SQL](#SQL)
-  - [Data Normalization](###Data-Normalization)
+  - [Data Normalization](#Data-Normalization)
 - [Python](#python)
 
 # Problem Description
