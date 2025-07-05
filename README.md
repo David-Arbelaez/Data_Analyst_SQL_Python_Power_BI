@@ -254,3 +254,14 @@ Groups the sentiment score into one of four defined buckets:
 '0.5 to 1.0', '0.0 to 4.9', '-0.49 to 0.0', or '-1.0 to -0.5'.
 
 <br/>
+
+In the end, we got a .csv file that looks something like this:
+
+<br/>
+
+![image](https://github.com/user-attachments/assets/064501f0-2d44-4faf-93aa-d904baf497f3)
+
+<br/>
+
+
+
