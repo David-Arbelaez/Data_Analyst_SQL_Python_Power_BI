@@ -266,7 +266,7 @@ In the end, we got a .csv file that looks something like this:
 
 # Power BI
 
-Una vez tenemos todas las tablas listas, podemos importarlas en Power BI para presentar los datos de forma visual y suportar el análisis que se nos solicitó. Una vez cargamos todas las bases de datos normalizadas, podemos aplicar relaciones según las variables que se comparten entre tablas:
+Once we have all the tables ready, we can import them into Power BI to present the data visually and support the analysis requested. Once we have loaded all the normalized databases, we can apply relationships according to the variables that are shared between tables:
 
 <br/>
 
@@ -274,7 +274,7 @@ Una vez tenemos todas las tablas listas, podemos importarlas en Power BI para pr
 
 <br/>
 
-Esto va a facilitar la comparación de datos en tiempo real cada vez que filtremos por periodos o indicadores específicos. Para poder filtrar según periodos determinados, es clave realizar una nueva tabla de fechas que facilite la visualización de los tatos. Puede ser desplegada faiclmente con el siguiente comando:
+This will facilitate the comparison of data in real time each time we filter by specific periods or indicators. To be able to filter by specific periods, it is key to create a new table of dates that facilitates the visualization of the data. It can be easily displayed with the following command:
 
 <br/>
 
@@ -301,9 +301,14 @@ ADDCOLUMNS (
 ```
 <br/>
 
-Tambien se aplicaron multiples medidas según los datos que se quisieran visualizar. También se aplicaron diseños originales atractivos para los posibles Stake Holders. Las páginas finales lucen de la siguiente forma:
+Multiple measures were also applied according to the data to be visualized. We also applied attractive original designs for the possible Stake Holders. The final pages look as follows:
 
 <br/>
+
+![image](https://github.com/user-attachments/assets/9d2718be-0591-43c0-a3c0-6dae64ebe544)
+![image](https://github.com/user-attachments/assets/58a31188-1efa-4092-bb2c-6ac5d96a5bd5)
+![image](https://github.com/user-attachments/assets/30990d3e-39dd-42a7-8b8d-d35668ca7090)
+
 
 # Analysis
 
