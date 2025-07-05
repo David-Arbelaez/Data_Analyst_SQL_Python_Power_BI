@@ -1,4 +1,4 @@
-# Data-Management-Sketch-
+# Data Analyst (SQL, Python, Power BI)
 
 <br/>
 
@@ -14,6 +14,8 @@ The idea is to perform a data study exercise and market analysis according to th
 - [Problem Description](#Problem-Description)
 - [SQL](#SQL)
 - [Python](#python)
+- [Power BI](#Power-BI)
+- [Analysis](#Analysis)
 
 # Problem Description
 
@@ -24,7 +26,6 @@ An online retailer is facing a drop in engagement and sales despite launching mu
 Key Points: 
 - Reduced Customer Engagement
 - Decreased Conversion Rates
-- High Marketing Expenses
 - Need for Customer Feedback Analysis
 
 <br/>
@@ -263,5 +264,88 @@ In the end, we got a .csv file that looks something like this:
 
 <br/>
 
+# Power BI
+
+Una vez tenemos todas las tablas listas, podemos importarlas en Power BI para presentar los datos de forma visual y suportar el análisis que se nos solicitó. Una vez cargamos todas las bases de datos normalizadas, podemos aplicar relaciones según las variables que se comparten entre tablas:
+
+<br/>
+
+![image](https://github.com/user-attachments/assets/373a5f38-8cb8-42c4-92b7-2b09a8872e09)
+
+<br/>
+
+Esto va a facilitar la comparación de datos en tiempo real cada vez que filtremos por periodos o indicadores específicos. Para poder filtrar según periodos determinados, es clave realizar una nueva tabla de fechas que facilite la visualización de los tatos. Puede ser desplegada faiclmente con el siguiente comando:
+
+<br/>
+
+```
+Calendar = 
+
+ADDCOLUMNS (
+    CALENDAR ( DATE ( 2023, 1, 1 ), DATE ( 2025, 12, 31 ) ),
+    "DateAsInteger", FORMAT ( [Date], "YYYYMMDD" ),
+    "Year", YEAR ( [Date] ),
+    "Monthnumber", FORMAT ( [Date], "MM" ),
+    "YearMonthnumber", FORMAT ( [Date], "YYYY/MM" ),
+    "YearMonthShort", FORMAT ( [Date], "YYYY/mmm" ),
+    "MonthNameShort", FORMAT ( [Date], "mmm" ),
+    "MonthNameLong", FORMAT ( [Date], "mmmm" ),
+    "DayOfWeekNumber", WEEKDAY ( [Date] ),
+    "DayofWeek", FORMAT ( [Date], "dddd" ),
+    "DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+    "Quarter", "Q" & FORMAT ( [Date], "Q" ),
+   "YearQuearter",
+        FORMAT ( [Date], "YYYY" ) & "/Q"
+        & FORMAT ( [Date], "Q")
+)
+```
+<br/>
+
+Tambien se aplicaron multiples medidas según los datos que se quisieran visualizar. También se aplicaron diseños originales atractivos para los posibles Stake Holders. Las páginas finales lucen de la siguiente forma:
+
+<br/>
+
+# Analysis
+
+### Reduced Customer Engagement 
+
+Declining Views: <br/>
+Views peaked in February and July but declined from August and on, indicating reduced audience engagement in the later half of the year.
+<br/> <br/>
+Low Interaction Rates: <br/>
+Clicks and likes remained consistently low compared to views, suggesting the need for more engaging content or stronger calls to action.
+
+<br/>
+
+![image](https://github.com/user-attachments/assets/a2dda140-eb05-4b07-a01e-3d2d799418b8)
+
+
+<br/>
+
+### Decreased Conversion Rates
+
+General Conversion Trend:<br/>
+Throughout the year, conversion rates varied, with higher numbers of products converting successfully in months like February and July. This suggests that while some products had strong seasonal peaks, there is potential to improve conversions in lower-performing months through targeted interventions.<br/><br/>
+Lowest Conversion Month:<br/>
+May experienced the lowest overall conversion rate at 4.3%, with no products standing out significantly in terms of conversion. This indicates a potential need to revisit marketing strategies or promotions during this period to boost performance.<br/><br/>
+Highest Conversion Rates:<br/>
+January recorded the highest overall conversion rate at 18.5%, driven significantly by the Ski Boots with a remarkable 150% conversion. This indicates a strong start to the year, likely fueled by seasonal demand and effective marketing strategies.<br/>
+<br/>
+
+![image](https://github.com/user-attachments/assets/8c7b187c-a113-4aea-847b-a0b2799b5e86)
+
+<br/>
+
+### Need for Customer Feedback Analysis
+
+Customer Ratings Distribution:<br/>
+The majority of customer reviews are in the higher ratings, with 140 reviews at 4 stars and 135 reviews at 5 stars, indicating overall positive feedback. Lower ratings (1-2 stars) account for a smaller proportion, with 26 reviews at 1 star and 57 reviews at 2 stars.<br/><br/>
+Sentiment Analysis:<br/>
+Positive sentiment dominates with 275 reviews, reflecting a generally satisfied customer base. Negative sentiment is present in 82 reviews, with a smaller number of mixed and neutral sentiments, suggesting some areas for improvement but overall strong customer approval.<br/><br/>
+Opportunity for Improvement:<br/>
+The presence of mixed positive and mixed negative sentiments suggests that there are opportunities to convert those mixed experiences into more clearly positive ones, potentially boosting overall ratings. Addressing the specific concerns in mixed reviews could elevate customer satisfaction.<br/><br/>
+
+![image](https://github.com/user-attachments/assets/6e0bd00c-d6c9-49c8-9be2-320d762ce5cd)
+![image](https://github.com/user-attachments/assets/af21fc02-4bf2-4448-a6e8-f666b494351b)
 
 
