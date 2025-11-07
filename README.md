@@ -348,7 +348,7 @@ The majority of customer reviews are in the higher ratings, with 140 reviews at 
 Sentiment Analysis:<br/>
 Positive sentiment dominates with 275 reviews, reflecting a generally satisfied customer base. Negative sentiment is present in 82 reviews, with a smaller number of mixed and neutral sentiments, suggesting some areas for improvement but overall strong customer approval.<br/><br/>
 Opportunity for Improvement:<br/>
-The presence of mixed positive and mixed negative sentiments suggests that there are opportunities to convert those mixed experiences into more clearly positive ones, potentially boosting overall ratings. Addressing the specific concerns in mixed reviews could elevate customer satisfaction.<br/><br/>
+The presence of mixed positive and mixed negative sentiments suggests that there are opportunities to convert those mixed experiences into more clearly positive ones, potentially boosting overall ratings. Addressing the specific concerns in mixed reviews could elevate customer satisfaction. 🤭<br/><br/>
 
 ![image](https://github.com/user-attachments/assets/6e0bd00c-d6c9-49c8-9be2-320d762ce5cd)
 ![image](https://github.com/user-attachments/assets/af21fc02-4bf2-4448-a6e8-f666b494351b)
